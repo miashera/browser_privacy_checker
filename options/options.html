@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +12,47 @@
             margin: 0;
             padding: 20px;
             background-color: #f4f4f4;
+            color: #333;
         }
+
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background: white;
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #333;
+
+        h1,
+        h2 {
+            color: #2c3e50;
         }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
         label {
             display: block;
             margin: 10px 0 5px;
         }
+
         input[type="checkbox"] {
             margin-right: 5px;
         }
+
+        .option-description {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-left: 25px;
+            margin-top: 2px;
+        }
+
         button {
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -40,30 +61,151 @@
             font-size: 16px;
             margin-top: 20px;
         }
+
         button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .cvss-info {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .severity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .severity-table th,
+        .severity-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .severity-table th {
+            background-color: #f8f9fa;
+        }
+
+        .severity-critical {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .severity-high {
+            background-color: #f8d7da;
+            color: #721c24;
+            opacity: 0.8;
+        }
+
+        .severity-medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .severity-low {
+            background-color: #d4edda;
+            color: #155724;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Browser Privacy Checker Options</h1>
-        <form id="optionsForm">
-            <label>
-                <input type="checkbox" id="analyzePrivacy" name="analyzePrivacy" checked>
-                Analyze Privacy Settings
-            </label>
-            <label>
-                <input type="checkbox" id="checkCookies" name="checkCookies" checked>
-                Check Cookies
-            </label>
-            <label>
-                <input type="checkbox" id="autoScan" name="autoScan">
-                Automatically scan new pages
-            </label>
-            <button type="submit">Save Options</button>
-        </form>
+
+        <div class="section">
+            <h2>Scanning Options</h2>
+            <form id="optionsForm">
+                <label>
+                    <input type="checkbox" id="analyzePrivacy" name="analyzePrivacy" checked>
+                    Analyze Privacy Settings
+                </label>
+                <p class="option-description">Scan browser privacy settings to identify potential issues</p>
+
+                <label>
+                    <input type="checkbox" id="checkCookies" name="checkCookies" checked>
+                    Check Cookies
+                </label>
+                <p class="option-description">Analyze cookies on websites for privacy concerns</p>
+
+                <label>
+                    <input type="checkbox" id="autoScan" name="autoScan">
+                    Automatically scan new pages
+                </label>
+                <p class="option-description">Run privacy checks automatically when you visit a new website</p>
+
+                <label>
+                    <input type="checkbox" id="showNotifications" name="showNotifications">
+                    Show notifications for high-risk issues
+                </label>
+                <p class="option-description">Display browser notifications when high-risk privacy issues are detected
+                </p>
+
+                <button type="submit">Save Options</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>About CVSS Scoring</h2>
+            <div class="cvss-info">
+                <p>The Common Vulnerability Scoring System (CVSS) is a framework for communicating the characteristics
+                    and severity of software vulnerabilities. This extension uses CVSS to rate privacy risks.</p>
+
+                <table class="severity-table">
+                    <tr>
+                        <th>Severity</th>
+                        <th>CVSS Score Range</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr class="severity-critical">
+                        <td>Critical</td>
+                        <td>9.0 - 10.0</td>
+                        <td>Critical privacy risks that require immediate attention</td>
+                    </tr>
+                    <tr class="severity-high">
+                        <td>High</td>
+                        <td>7.0 - 8.9</td>
+                        <td>High-risk privacy issues that should be addressed quickly</td>
+                    </tr>
+                    <tr class="severity-medium">
+                        <td>Medium</td>
+                        <td>4.0 - 6.9</td>
+                        <td>Moderate privacy concerns that should be reviewed</td>
+                    </tr>
+                    <tr class="severity-low">
+                        <td>Low</td>
+                        <td>0.1 - 3.9</td>
+                        <td>Low-risk privacy issues that have minimal impact</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Report History</h2>
+            <p>The extension keeps a history of the last 10 privacy reports. You can view and export these reports from
+                the extension popup.</p>
+            <button id="clearHistory">Clear Report History</button>
+        </div>
     </div>
+
     <script src="options.js"></script>
 </body>
+
 </html>

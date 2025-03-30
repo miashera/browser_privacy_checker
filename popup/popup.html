@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser Privacy Checker</title>
     <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
-    <h1>Browser Privacy Checker</h1>
-    <button id="analyzePrivacy">Analyze Privacy Settings</button>
-    <button id="checkCookies">Check Cookies</button>
-    <div id="results"></div>
+    <div class="container">
+        <header>
+            <h1>Browser Privacy Checker</h1>
+            <div class="tabs">
+                <button id="tabAnalysis" class="tab-btn active">Analysis</button>
+                <button id="tabRecommendations" class="tab-btn">Recommendations</button>
+                <button id="tabReports" class="tab-btn">Reports</button>
+            </div>
+        </header>
+
+        <div id="analysisTab" class="tab-content active">
+            <button id="analyzePrivacy" class="primary-btn">Analyze Privacy Settings</button>
+            <button id="checkCookies" class="primary-btn">Check Cookies</button>
+            <div id="results" class="results-container"></div>
+        </div>
+
+        <div id="recommendationsTab" class="tab-content">
+            <h2>Recommended Settings</h2>
+            <div id="recommendationsList"></div>
+        </div>
+
+        <div id="reportsTab" class="tab-content">
+            <div class="report-actions">
+                <button id="generateReport" class="primary-btn">Generate Report</button>
+                <button id="exportReport" class="secondary-btn" disabled>Export Report</button>
+            </div>
+            <h2>Report History</h2>
+            <div id="reportHistory"></div>
+        </div>
+
+        <footer>
+            <button id="openOptions" class="text-btn">Options</button>
+        </footer>
+    </div>
     <script src="popup.js"></script>
 </body>
+
 </html>
